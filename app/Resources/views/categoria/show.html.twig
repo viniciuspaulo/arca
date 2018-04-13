@@ -1,0 +1,19 @@
+{% extends 'componentes/cadastro.html.twig' %}
+
+{% block cadcabecalho%}
+    Categoria
+{% endblock %}
+
+{% block cadcorpo %}
+
+    {% include 'categoria/campos.view.html.twig' %}
+    <br>
+    <div class="row">
+        <div class="col-md-2 pr-1">
+            <a href="{{ path('categoria_index') }}" class="btn btn-warning btn-block">
+                Voltar
+            </a>  
+        </div>
+    </div>
+
+{% endblock %}

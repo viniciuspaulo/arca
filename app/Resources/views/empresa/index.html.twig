@@ -1,0 +1,60 @@
+{% extends 'componentes/listagem.html.twig' %}
+
+{% block listcabecalho%}
+    Listagem de Empresa
+{% endblock %}
+
+{% block listcorpo %}
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead class=" text-primary">
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Telefone</th>
+                <th>Endereco</th>
+                <th>Cep</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Descricao</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {% for empresa in empresas %}
+                    <tr>
+                        <td><a href="{{ path('empresa_show', { 'id': empresa.id }) }}">{{ empresa.id }}</a></td>
+                        <td>{{ empresa.titulo }}</td>
+                        <td>{{ empresa.telefone }}</td>
+                        <td>{{ empresa.endereco }}</td>
+                        <td>{{ empresa.cep }}</td>
+                        <td>{{ empresa.cidade }}</td>
+                        <td>{{ empresa.estado }}</td>
+                        <td>{{ empresa.descricao }}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-6 pr-1">
+                                    <a href="{{ path('empresa_show', { 'id': empresa.id }) }}" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
+                                        <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                    </a>  
+                                    </div>
+                                <div class="col-md-6 pr-1">
+                                    <a href="{{ path('empresa_edit', { 'id': empresa.id }) }}" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
+                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                    </a>  
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 pr-1">
+            <a href="{{ path('empresa_new') }}" class="btn btn-primary btn-block">
+                Novo
+            </a>  
+        </div>
+    </div>
+{% endblock %}

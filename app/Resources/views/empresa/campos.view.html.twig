@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-2 pr-1">
+        <div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" disabled placeholder="id" value="{{empresa.id}}">
+        </div>
+    </div>
+    <div class="col-md-6 px-1">
+        <div class="form-group">
+            <label>Titulo</label>
+            <input type="text" class="form-control" placeholder="Titulo" value="{{empresa.titulo}}">
+        </div>
+    </div>
+    <div class="col-md-4 pl-1">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Telefone</label>
+            <input type="email" class="form-control" placeholder="Email" value="{{empresa.telefone}}">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 pr-1">
+        <label>Endereço</label>
+        <input type="text" class="form-control" placeholder="Endereço" value="{{empresa.endereco}}">
+    </div>
+    <div class="col-md-4 pr-1">
+        <label>Cep</label>
+        <input type="text" class="form-control" placeholder="Cep" value="{{empresa.cep}}">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 pr-1">
+        <label>Cidade</label>
+        <input type="text" class="form-control" placeholder="Cidade" value="{{empresa.endereco}}">
+    </div>
+    <div class="col-md-6 pr-1">
+        <label>Estado</label>
+        <input type="text" class="form-control" placeholder="Estado" value="{{empresa.cep}}">
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12 pr-1">
+        <select id="appbundle_empresa_categorias" name="appbundle_empresa[categorias][]" class="form-control" multiple="multiple">
+            {% for categoria in categorias %}
+                <option value="{{categoria.id}}">Categoria : {{categoria.titulo}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12 pr-1">
+        <label>Descricão</label>
+        <textarea class="form-control" placeholder="Digite uma descricao" name="descricao" cols="30">
+            {{empresa.endereco}}
+        </textarea>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{% extends 'componentes/cadastro.html.twig' %}
+
+{% block cadcabecalho%}
+    Empresa
+{% endblock %}
+
+{% block cadcorpo %}
+        {% include 'empresa/campos.view.html.twig' %}
+        <br>
+        <div class="row">
+            <div class="col-md-2 pr-1">
+                <a href="{{ path('empresa_index') }}" class="btn btn-warning btn-block">
+                    Voltar
+                </a>  
+            </div>
+        </div>
+{% endblock %}

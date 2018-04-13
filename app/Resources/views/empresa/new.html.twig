@@ -1,0 +1,22 @@
+{% extends 'componentes/cadastro.html.twig' %}
+
+{% block cadcabecalho%}
+    Cadastro de Empresa
+{% endblock %}
+
+{% block cadcorpo %}
+    <form method="POST">
+        {% include 'empresa/campos.form.html.twig' %}
+        <br>
+        <div class="row">
+            <div class="col-md-2 pr-1">
+                <input class="btn btn-primary btn-block" type="submit" value="Criar" />  
+            </div>
+            <div class="col-md-2 pr-1">
+                <a href="{{ path('empresa_index') }}" class="btn btn-warning btn-block">
+                    Cancelar
+                </a>  
+            </div>
+        </div>
+    </form>
+{% endblock %}

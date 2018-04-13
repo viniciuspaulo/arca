@@ -1,0 +1,19 @@
+{% extends 'componentes/cadastro.html.twig' %}
+
+{% block cadcabecalho%}
+    Usuario
+{% endblock %}
+
+{% block cadcorpo %}
+
+    {% include 'usuario/campos.view.html.twig' %}
+   
+    <div class="row">
+        <div class="col-md-2 pr-1">
+            <a href="{{ path('usuario_index') }}" class="btn btn-warning btn-block">
+                Voltar
+            </a>  
+        </div>
+    </div>
+
+{% endblock %}

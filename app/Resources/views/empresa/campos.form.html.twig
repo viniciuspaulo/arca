@@ -1,0 +1,58 @@
+{{ form_widget(form._token) }}
+<div class="row">
+    <div class="col-md-2 pr-1">
+        <div class="form-group">
+            <label>ID</label>
+            <input type="text" class="form-control" disabled placeholder="id" value="{{empresa.id}}">
+        </div>
+    </div>
+    <div class="col-md-6 px-1">
+        <div class="form-group">
+            {{ form_label(form.titulo) }}
+            {{ form_widget(form.titulo,{'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="col-md-4 pl-1">
+        <div class="form-group">
+            {{ form_label(form.telefone) }}
+            {{ form_widget(form.telefone,{'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 pr-1">
+       {{ form_label(form.endereco) }}
+       {{ form_widget(form.endereco,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-md-4 pr-1">
+       {{ form_label(form.cep) }}
+       {{ form_widget(form.cep,{'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 pr-1">
+       {{ form_label(form.cidade) }}
+       {{ form_widget(form.cidade,{'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="col-md-6 pr-1">
+       {{ form_label(form.estado) }}
+       {{ form_widget(form.estado,{'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12 pr-1">
+        {{ form_label(form.categorias) }}
+        {{ form_widget(form.categorias,{'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-md-12 pr-1">
+        <label>Descricão</label>
+        {{ form_widget(form.descricao,{'attr': {'class': 'form-control','cols' : '30'}}) }} 
+    </div>
+</div>

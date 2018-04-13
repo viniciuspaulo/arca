@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+        .wrapper.wrapper-full-page {
+            background-image: url('http://www.arcasolutions.com.br/assets/img/header-bg.png') !important;
+        }
+        .content{
+            padding-top: 10%;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div class="wrapper wrapper-full-page ">
+   <div class="full-page login-page section-image" filter-color="black" data-image="../../assets/img/bg14.jpg">
+      <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+      <div class="content">
+         <div class="container">
+            <div class="col-md-4 ml-auto mr-auto">
+               <form class="form" method="POST" action="{{path('login')}}">
+                  <div class="card card-login card-plain">
+                     <div class="card-header ">
+                        <div class="logo-container">
+                           <div class="logo">
+                                <img src="data:image/webp;base64,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" alt="Arca Solutions" title="Arca Solutions" data-pagespeed-url-hash="2942285020" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="card-body ">
+                            {% if error %}
+                                <div style="text-align:center">
+                                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                                </div>
+                            {% endif %}
+
+                        <div class="input-group no-border form-control-lg">
+                           <span class="input-group-addon">
+                           <i class="now-ui-icons users_circle-08"></i>
+                           </span>
+                           <input type="email" placeholder="Usuário" class="form-control" id="username" name="_username" value="{{ last_username }}" />
+                        </div>
+                        <div class="input-group no-border form-control-lg">
+                           <span class="input-group-addon">
+                           <i class="now-ui-icons text_caps-small"></i>
+                           </span>
+                           <input type="password" placeholder="Senha" id="password" name="_password" class="form-control" />
+                        </div>
+                     </div>
+                     <div class="card-footer ">
+                        <!-- <input type="submit" class="btn btn-info btn-round btn-lg btn-block mb-3" value="LOGAR" /> -->
+                        <a href="/empresa" class="btn btn-info btn-round btn-lg btn-block mb-3">LOGAR</a>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

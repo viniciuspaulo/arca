@@ -1,0 +1,52 @@
+{% extends 'componentes/listagem.html.twig' %}
+
+{% block listcabecalho%}
+    Listagem de Usuários
+{% endblock %}
+
+{% block listcorpo %}
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead class=" text-primary">
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td><a href="{{ path('usuario_show', { 'id': usuario.id }) }}">{{ usuario.id }}</a></td>
+                        <td>{{ usuario.name }}</td>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.password }}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-6 pr-1">
+                                    <a href="{{ path('usuario_show', { 'id': usuario.id }) }}" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
+                                        <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                    </a>  
+                                    </div>
+                                <div class="col-md-6 pr-1">
+                                    <a href="{{ path('usuario_edit', { 'id': usuario.id }) }}" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral">
+                                        <i class="now-ui-icons ui-2_settings-90"></i>
+                                    </a>  
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 pr-1">
+            <a href="{{ path('usuario_new') }}" class="btn btn-primary btn-block">
+                Novo
+            </a>  
+        </div>
+    </div>
+{% endblock %}

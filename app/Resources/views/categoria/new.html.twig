@@ -1,0 +1,23 @@
+{% extends 'componentes/cadastro.html.twig' %}
+
+{% block cadcabecalho%}
+    Categoria
+{% endblock %}
+
+{% block cadcorpo %}
+    <form method="POST">
+        {{ form_widget(form._token) }}
+        {% include 'categoria/campos.form.html.twig' %}
+        <br>
+        <div class="row">
+            <div class="col-md-2 pr-1">
+                <input class="btn btn-primary btn-block" type="submit" value="Criar" />  
+            </div>
+            <div class="col-md-2 pr-1">
+                <a href="{{ path('categoria_index') }}" class="btn btn-warning btn-block">
+                    Cancelar
+                </a>  
+            </div>
+        </div>
+    </form>
+{% endblock %}
