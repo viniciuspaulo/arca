@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Usuario;
+use AppBundle\Generic\GenericSessao;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -14,14 +15,25 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class UsuarioController extends Controller
 {
+
+    protected $sessao;
+    public function __construct(GenericSessao $sessao)
+    {
+        $this->sessao = $sessao;
+    }
+
+
     /**
      * Lists all usuario entities.
      *
      * @Route("/", name="usuario_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        
+        $this->sessao->validarSessao($request);
+        
         $em = $this->getDoctrine()->getManager();
 
         $usuarios = $em->getRepository('AppBundle:Usuario')->findAll();
@@ -39,6 +51,7 @@ class UsuarioController extends Controller
      */
     public function newAction(Request $request)
     {
+        $this->sessao->validarSessao($request);
         $usuario = new Usuario();
         $form = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
         $form->handleRequest($request);
@@ -64,8 +77,9 @@ class UsuarioController extends Controller
      * @Route("/{id}", name="usuario_show")
      * @Method("GET")
      */
-    public function showAction(Usuario $usuario)
+    public function showAction(Request $request,Usuario $usuario)
     {
+        $this->sessao->validarSessao($request);
         $deleteForm = $this->createDeleteForm($usuario);
 
         return $this->render('usuario/show.html.twig', array(
@@ -82,6 +96,7 @@ class UsuarioController extends Controller
      */
     public function editAction(Request $request, Usuario $usuario)
     {
+        $this->sessao->validarSessao($request);
         $deleteForm = $this->createDeleteForm($usuario);
         $editForm = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
         $editForm->handleRequest($request);
@@ -107,6 +122,7 @@ class UsuarioController extends Controller
      */
     public function deleteAction(Request $request, Usuario $usuario)
     {
+        $this->sessao->validarSessao($request);
         $form = $this->createDeleteForm($usuario);
         $form->handleRequest($request);
 

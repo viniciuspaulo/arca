@@ -6,13 +6,29 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use AppBundle\Generic\GenericSessao;
+
+
 class DefaultController extends Controller
 {
+
+    protected $sessao;
+    public function __construct(GenericSessao $sessao)
+    {
+        $this->sessao = $sessao;
+    }
+
+
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
     {
+
+        $logout = $request->query->get('logout'); 
+        if($logout){
+            $this->sessao->excluirSessao($request);
+        }
 
         if($request->isXmlHttpRequest()){
             $em = $this->getDoctrine()->getManager();
@@ -36,4 +52,5 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+    
 }

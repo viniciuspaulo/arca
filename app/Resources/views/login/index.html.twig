@@ -26,28 +26,29 @@
                         </div>
                      </div>
                      <div class="card-body ">
-                            {% if error %}
-                                <div style="text-align:center">
-                                    {{ error.messageKey|trans(error.messageData, 'security') }}
-                                </div>
-                            {% endif %}
-
+                         {% if problemas %}
+                            <div class="alert alert-danger">
+                                <!-- <button type="button" aria-hidden="true" class="close">
+                                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                                </button> -->
+                                <span><b> :( </b> Usuário nao encontrado</span>
+                            </div>
+                         {% endif %}
                         <div class="input-group no-border form-control-lg">
                            <span class="input-group-addon">
                            <i class="now-ui-icons users_circle-08"></i>
                            </span>
-                           <input type="email" placeholder="Usuário" class="form-control" id="username" name="_username" value="{{ last_username }}" />
+                           <input type="email" placeholder="Usuário" class="form-control" id="email" name="email" />
                         </div>
                         <div class="input-group no-border form-control-lg">
                            <span class="input-group-addon">
                            <i class="now-ui-icons text_caps-small"></i>
                            </span>
-                           <input type="password" placeholder="Senha" id="password" name="_password" class="form-control" />
+                           <input type="password" placeholder="Senha" id="password" name="senha" class="form-control" />
                         </div>
                      </div>
                      <div class="card-footer ">
-                        <!-- <input type="submit" class="btn btn-info btn-round btn-lg btn-block mb-3" value="LOGAR" /> -->
-                        <a href="/empresa" class="btn btn-info btn-round btn-lg btn-block mb-3">LOGAR</a>
+                        <input type="submit" class="btn btn-info btn-round btn-lg btn-block mb-3" value="LOGAR" />
                      </div>
                   </div>
                </form>

@@ -15,7 +15,7 @@
     <div class="col-md-4 pl-1">
         <div class="form-group">
             {{ form_label(form.telefone) }}
-            {{ form_widget(form.telefone,{'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.telefone,{'attr': {'class': 'form-control tel'}}) }}
         </div>
     </div>
 </div>
@@ -27,7 +27,7 @@
     </div>
     <div class="col-md-4 pr-1">
        {{ form_label(form.cep) }}
-       {{ form_widget(form.cep,{'attr': {'class': 'form-control'}}) }}
+       {{ form_widget(form.cep,{'attr': {'class': 'form-control cep'}}) }}
     </div>
 </div>
 
@@ -38,7 +38,7 @@
     </div>
     <div class="col-md-6 pr-1">
        {{ form_label(form.estado) }}
-       {{ form_widget(form.estado,{'attr': {'class': 'form-control'}}) }}
+       {{ form_widget(form.estado,{'attr': {'class': 'form-control' , 'maxlength' : 2}}) }}
     </div>
 </div>
 <br>

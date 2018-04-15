@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Categoria;
+use AppBundle\Generic\GenericSessao;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -14,14 +15,24 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class CategoriaController extends Controller
 {
+
+    protected $sessao;
+    public function __construct(GenericSessao $sessao)
+    {
+        $this->sessao = $sessao;
+    }
+
     /**
      * Lists all categoria entities.
      *
      * @Route("/", name="categoria_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+
+        $this->sessao->validarSessao($request);
+        
         $em = $this->getDoctrine()->getManager();
 
         $categorias = $em->getRepository('AppBundle:Categoria')->findAll();
@@ -39,6 +50,7 @@ class CategoriaController extends Controller
      */
     public function newAction(Request $request)
     {
+        $this->sessao->validarSessao($request);
         $categoria = new Categoria();
         $form = $this->createForm('AppBundle\Form\CategoriaType', $categoria);
         $form->handleRequest($request);
@@ -63,8 +75,9 @@ class CategoriaController extends Controller
      * @Route("/{id}", name="categoria_show")
      * @Method("GET")
      */
-    public function showAction(Categoria $categoria)
+    public function showAction(Request $request, Categoria $categoria)
     {
+        $this->sessao->validarSessao($request);
         $deleteForm = $this->createDeleteForm($categoria);
 
         return $this->render('categoria/show.html.twig', array(
@@ -81,6 +94,7 @@ class CategoriaController extends Controller
      */
     public function editAction(Request $request, Categoria $categoria)
     {
+        $this->sessao->validarSessao($request);
         $deleteForm = $this->createDeleteForm($categoria);
         $editForm = $this->createForm('AppBundle\Form\CategoriaType', $categoria);
         $editForm->handleRequest($request);
@@ -106,6 +120,7 @@ class CategoriaController extends Controller
      */
     public function deleteAction(Request $request, Categoria $categoria)
     {
+        $this->sessao->validarSessao($request);
         $form = $this->createDeleteForm($categoria);
         $form->handleRequest($request);
 

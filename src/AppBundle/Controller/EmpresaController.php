@@ -3,9 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Empresa;
+use AppBundle\Generic\GenericSessao;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Empresa controller.
@@ -13,19 +15,25 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  * @Route("empresa")
  */
 class EmpresaController extends Controller
-{
+{   
+
+    protected $sessao;
+    public function __construct(GenericSessao $sessao)
+    {
+        $this->sessao = $sessao;
+    }
+
     /**
      * Lists all empresa entities.
      *
      * @Route("/", name="empresa_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $this->sessao->validarSessao($request);
         $em = $this->getDoctrine()->getManager();
-
         $empresas = $em->getRepository('AppBundle:Empresa')->findAll();
-
         return $this->render('empresa/index.html.twig', array(
             'empresas' => $empresas,
         ));
@@ -39,6 +47,7 @@ class EmpresaController extends Controller
      */
     public function newAction(Request $request)
     {
+        $this->sessao->validarSessao($request);
         $empresa = new Empresa();
         $form = $this->createForm('AppBundle\Form\EmpresaType', $empresa);
         $form->handleRequest($request);
@@ -67,8 +76,9 @@ class EmpresaController extends Controller
      * @Route("/{id}", name="empresa_show")
      * @Method("GET")
      */
-    public function showAction(Empresa $empresa)
+    public function showAction(Request $request,Empresa $empresa)
     {
+        $this->sessao->validarSessao($request);
         $deleteForm = $this->createDeleteForm($empresa);
         $em = $this->getDoctrine()->getManager();
         $categorias = $em->getRepository('AppBundle:Categoria')->findAll();
@@ -88,6 +98,7 @@ class EmpresaController extends Controller
      */
     public function editAction(Request $request, Empresa $empresa)
     {
+        $this->sessao->validarSessao($request);
         $deleteForm = $this->createDeleteForm($empresa);
         $editForm = $this->createForm('AppBundle\Form\EmpresaType', $empresa);
         $editForm->handleRequest($request);
@@ -117,6 +128,7 @@ class EmpresaController extends Controller
      */
     public function deleteAction(Request $request, Empresa $empresa)
     {
+        $this->sessao->validarSessao($request);
         $form = $this->createDeleteForm($empresa);
         $form->handleRequest($request);
 
@@ -144,4 +156,5 @@ class EmpresaController extends Controller
             ->getForm()
         ;
     }
+
 }
