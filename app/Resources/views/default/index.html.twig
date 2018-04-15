@@ -141,20 +141,26 @@
             }
 
             if(empresas.length === 0){
-                empresas = empresas.filter((empresa)=>{
+                empresas = empresasOriginais.filter((empresa)=>{
                     return (empresa.endereco.toLowerCase().indexOf(pesquisa.toLowerCase()) > -1);
                 })
             }
 
             if(empresas.length === 0){
-                empresas = empresas.filter((empresa)=>{
+                empresas = empresasOriginais.filter((empresa)=>{
                     return (empresa.cep.toLowerCase().indexOf(pesquisa.toLowerCase()) > -1);
                 })
             }
 
             if(empresas.length === 0){
-                empresas = empresas.filter((empresa)=>{
+                empresas = empresasOriginais.filter((empresa)=>{
                     return (empresa.cidade.toLowerCase().indexOf(pesquisa.toLowerCase()) > -1);
+                })
+            }
+
+            if(empresas.length === 0){
+                empresas = empresasOriginais.filter((empresa)=>{
+                    return (empresa.telefone.toLowerCase().indexOf(pesquisa.toLowerCase()) > -1);
                 })
             }
 
