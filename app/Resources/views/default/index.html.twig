@@ -210,7 +210,14 @@
                 }
                 listagemHTML.append(`
                 <li onclick="abrirModal(${empresa.id})">
-                    Empresa : ${empresa.titulo} | Categorias : ${categoriasHTML}
+                    <div class='row'>
+                        <div class='col-md-8'>
+                            Empresa : ${empresa.titulo}
+                        </div>
+                        <div class='col-md-4'>
+                            Categorias : ${categoriasHTML}
+                        </div>
+                    </div
                 </li>`);
             })
         }

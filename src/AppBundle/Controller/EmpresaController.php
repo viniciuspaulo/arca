@@ -30,10 +30,19 @@ class EmpresaController extends Controller
      * @Method("GET")
      */
     public function indexAction(Request $request)
-    {
+    {   
+        // $limit = 5; 
+
         $this->sessao->validarSessao($request);
         $em = $this->getDoctrine()->getManager();
         $empresas = $em->getRepository('AppBundle:Empresa')->findAll();
+
+
+        // $pagina = $request->query->get('pagina'); 
+        // if($pagina){
+            
+        // }
+
         return $this->render('empresa/index.html.twig', array(
             'empresas' => $empresas,
         ));
